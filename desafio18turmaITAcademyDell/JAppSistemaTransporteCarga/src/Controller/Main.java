@@ -10,8 +10,8 @@ import View.*;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Seja bem-vindo ao Sistema de simulação de transporte interestadual (24/03/23).");
-        ViewController cl = new ViewController(new JFrameMenu(), new JFrameAbout(), new JFrameCalcRota());
+         System.out.println("Seja bem-vindo ao Sistema de simulação de transporte interestadual (24/03/23).");
+        ViewController cl = new ViewController(new JFrameMenu(), new JFrameAbout(), new JFrameCalcRota(), new JFrameRotaCalculada());
         
         cl.initController();
         

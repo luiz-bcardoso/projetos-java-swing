@@ -6,6 +6,7 @@ package View;
 
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,8 +41,10 @@ public class JFrameMenu extends javax.swing.JFrame {
         jLabelVersao = new javax.swing.JLabel();
         jMenu = new javax.swing.JMenuBar();
         JMenuFile = new javax.swing.JMenu();
-        jMenuItemCalcRota = new javax.swing.JMenuItem();
-        jMenuItemSimulaRota = new javax.swing.JMenuItem();
+        jMenuItem_CalcRota = new javax.swing.JMenuItem();
+        jMenuItem_SimulaRota = new javax.swing.JMenuItem();
+        jSeparator = new javax.swing.JPopupMenu.Separator();
+        jMenuItem_Sair = new javax.swing.JMenuItem();
         jMenuView = new javax.swing.JMenu();
         jMenuItemDadosEst = new javax.swing.JMenuItem();
         jMenuEdit = new javax.swing.JMenu();
@@ -101,15 +104,24 @@ public class JFrameMenu extends javax.swing.JFrame {
 
         jLabelVersao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelVersao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelVersao.setText("Versão 0.1 - 24 / mar / 2023");
+        jLabelVersao.setText("Versão 0.2 - 25 / mar / 2023");
 
         JMenuFile.setText("File");
 
-        jMenuItemCalcRota.setText("Calcular trechos existentes...");
-        JMenuFile.add(jMenuItemCalcRota);
+        jMenuItem_CalcRota.setText("Calcular trechos existentes...");
+        JMenuFile.add(jMenuItem_CalcRota);
 
-        jMenuItemSimulaRota.setText("Cadastar novo trecho...");
-        JMenuFile.add(jMenuItemSimulaRota);
+        jMenuItem_SimulaRota.setText("Cadastar novo trecho...");
+        JMenuFile.add(jMenuItem_SimulaRota);
+        JMenuFile.add(jSeparator);
+
+        jMenuItem_Sair.setText("Sair...");
+        jMenuItem_Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_SairActionPerformed(evt);
+            }
+        });
+        JMenuFile.add(jMenuItem_Sair);
 
         jMenu.add(JMenuFile);
 
@@ -167,6 +179,16 @@ public class JFrameMenu extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_SairActionPerformed
+        int confirm = JOptionPane.showOptionDialog(this,
+                        "Você tem certeza que quer sair da aplicação?",
+                        "Deseja realmente sair?", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE, null, null, null);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+    }//GEN-LAST:event_jMenuItem_SairActionPerformed
     
     // Deixa publico o acesso ao clique do menuItem "About..."
     public JMenuItem getJMenuItemAbout(){
@@ -174,7 +196,7 @@ public class JFrameMenu extends javax.swing.JFrame {
     }
     // Deixa publico o acesso ao clique do menuItem "CalcRota"
     public JMenuItem getJMenuCalcRota(){
-        return jMenuItemCalcRota;
+        return jMenuItem_CalcRota;
     }
     // Deixa publico o acesso ao clique do botão "CalcRota"
     public JButton getJButtonCalcRota(){
@@ -192,12 +214,14 @@ public class JFrameMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenu;
     private javax.swing.JMenu jMenuEdit;
     private javax.swing.JMenuItem jMenuItemAbout;
-    private javax.swing.JMenuItem jMenuItemCalcRota;
     private javax.swing.JMenuItem jMenuItemConfig;
     private javax.swing.JMenuItem jMenuItemDadosEst;
-    private javax.swing.JMenuItem jMenuItemSimulaRota;
+    private javax.swing.JMenuItem jMenuItem_CalcRota;
+    private javax.swing.JMenuItem jMenuItem_Sair;
+    private javax.swing.JMenuItem jMenuItem_SimulaRota;
     private javax.swing.JMenu jMenuView;
     private javax.swing.JPanel jPanelSelection;
+    private javax.swing.JPopupMenu.Separator jSeparator;
     private javax.swing.JSeparator jSeparatorTitulo;
     private javax.swing.JSeparator jSeparatorVersao;
     // End of variables declaration//GEN-END:variables
