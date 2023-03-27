@@ -145,9 +145,6 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox_CidadeOrigem">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[72, 32]"/>
         </Property>
@@ -163,9 +160,6 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox_CidadeDestino">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[72, 32]"/>
         </Property>

@@ -57,6 +57,11 @@ public class Arquivo {
                 j++; // Quando terminar de cadastrar faz o incremento de cidade
             }
         } catch (IOException e) {
+            System.out.println("======================================================================================");
+            System.out.println("ERRO! O sistema não pode encontrar o arquivo especificado.");
+            System.out.println("Verifique se o arquivo possui o nome da extensão e que está digitado corretamente.");
+            System.out.println("Também verifique se o arquivo está na pasta raiz do projeto/programa.");
+            System.out.println("======================================================================================");
             System.out.println(e);
         }
     }

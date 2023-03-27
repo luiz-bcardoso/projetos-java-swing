@@ -34,19 +34,19 @@ public class JFrameMenu extends javax.swing.JFrame {
         jSeparatorTitulo = new javax.swing.JSeparator();
         jPanelSelection = new javax.swing.JPanel();
         jLabelSelecionar = new javax.swing.JLabel();
-        jButtonCalcRota = new javax.swing.JButton();
-        jButtonSimulaRota = new javax.swing.JButton();
-        jButtonDadosEst = new javax.swing.JButton();
+        jButton_SimularRota = new javax.swing.JButton();
+        jButton_CalcularRota = new javax.swing.JButton();
+        jButton_DadosEstatistica = new javax.swing.JButton();
         jSeparatorVersao = new javax.swing.JSeparator();
         jLabelVersao = new javax.swing.JLabel();
         jMenu = new javax.swing.JMenuBar();
         JMenuFile = new javax.swing.JMenu();
-        jMenuItem_CalcRota = new javax.swing.JMenuItem();
-        jMenuItem_SimulaRota = new javax.swing.JMenuItem();
+        jMenuItem_SimularRota = new javax.swing.JMenuItem();
+        jMenuItem_CalcularRota = new javax.swing.JMenuItem();
         jSeparator = new javax.swing.JPopupMenu.Separator();
         jMenuItem_Sair = new javax.swing.JMenuItem();
         jMenuView = new javax.swing.JMenu();
-        jMenuItemDadosEst = new javax.swing.JMenuItem();
+        jMenuItem_DadosEstatistica = new javax.swing.JMenuItem();
         jMenuEdit = new javax.swing.JMenu();
         jMenuItemConfig = new javax.swing.JMenuItem();
         jMenuItemAbout = new javax.swing.JMenuItem();
@@ -64,14 +64,17 @@ public class JFrameMenu extends javax.swing.JFrame {
 
         jLabelSelecionar.setText("Por favor, selecione uma das opções abaixo:");
 
-        jButtonCalcRota.setText("Calcular Trechos");
-        jButtonCalcRota.setPreferredSize(new java.awt.Dimension(150, 50));
+        jButton_SimularRota.setText("Consultar Trechos");
+        jButton_SimularRota.setEnabled(false);
+        jButton_SimularRota.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        jButtonSimulaRota.setText("Registrar Trecho");
-        jButtonSimulaRota.setPreferredSize(new java.awt.Dimension(150, 50));
+        jButton_CalcularRota.setText("Cadastrar Transporte");
+        jButton_CalcularRota.setEnabled(false);
+        jButton_CalcularRota.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        jButtonDadosEst.setText("Dados Estatísticos...");
-        jButtonDadosEst.setPreferredSize(new java.awt.Dimension(150, 50));
+        jButton_DadosEstatistica.setText("Dados Estatísticos");
+        jButton_DadosEstatistica.setEnabled(false);
+        jButton_DadosEstatistica.setPreferredSize(new java.awt.Dimension(150, 50));
 
         javax.swing.GroupLayout jPanelSelectionLayout = new javax.swing.GroupLayout(jPanelSelection);
         jPanelSelection.setLayout(jPanelSelectionLayout);
@@ -82,11 +85,11 @@ public class JFrameMenu extends javax.swing.JFrame {
                 .addGroup(jPanelSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSelecionar)
                     .addGroup(jPanelSelectionLayout.createSequentialGroup()
-                        .addComponent(jButtonCalcRota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_SimularRota, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonSimulaRota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_CalcularRota, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonDadosEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton_DadosEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelSelectionLayout.setVerticalGroup(
@@ -94,25 +97,28 @@ public class JFrameMenu extends javax.swing.JFrame {
             .addGroup(jPanelSelectionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelSelecionar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanelSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCalcRota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSimulaRota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDadosEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(jButton_DadosEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_CalcularRota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_SimularRota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jLabelVersao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelVersao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelVersao.setText("Versão 0.2 - 25 / mar / 2023");
+        jLabelVersao.setText("Versão 0.3 - 26 / mar / 2023");
 
         JMenuFile.setText("File");
 
-        jMenuItem_CalcRota.setText("Calcular trechos existentes...");
-        JMenuFile.add(jMenuItem_CalcRota);
+        jMenuItem_SimularRota.setText("Consultar rota por modalidade...");
+        jMenuItem_SimularRota.setEnabled(false);
+        JMenuFile.add(jMenuItem_SimularRota);
 
-        jMenuItem_SimulaRota.setText("Cadastar novo trecho...");
-        JMenuFile.add(jMenuItem_SimulaRota);
+        jMenuItem_CalcularRota.setText("Cadastrar novo transporte...");
+        jMenuItem_CalcularRota.setToolTipText("");
+        jMenuItem_CalcularRota.setEnabled(false);
+        JMenuFile.add(jMenuItem_CalcularRota);
         JMenuFile.add(jSeparator);
 
         jMenuItem_Sair.setText("Sair...");
@@ -127,8 +133,9 @@ public class JFrameMenu extends javax.swing.JFrame {
 
         jMenuView.setText("View");
 
-        jMenuItemDadosEst.setText("Estatísitica sobre trechos realizados...");
-        jMenuView.add(jMenuItemDadosEst);
+        jMenuItem_DadosEstatistica.setText("Dados sobre rotas já realizadas...");
+        jMenuItem_DadosEstatistica.setEnabled(false);
+        jMenuView.add(jMenuItem_DadosEstatistica);
 
         jMenu.add(jMenuView);
 
@@ -155,9 +162,7 @@ public class JFrameMenu extends javax.swing.JFrame {
                     .addComponent(jSeparatorTitulo)
                     .addComponent(jLabelVersao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparatorVersao)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanelSelection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,7 +184,8 @@ public class JFrameMenu extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // Caso o usuario clicar no botõa de sair mostra uma mensagem de confirmação
     private void jMenuItem_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_SairActionPerformed
         int confirm = JOptionPane.showOptionDialog(this,
                         "Você tem certeza que quer sair da aplicação?",
@@ -189,25 +195,44 @@ public class JFrameMenu extends javax.swing.JFrame {
                     System.exit(0);
                 }
     }//GEN-LAST:event_jMenuItem_SairActionPerformed
+
+    //
+    public JButton getjButton_SimularRota() {
+        return jButton_SimularRota;
+    }
+    public JMenuItem getjMenuItem_SimularRota() {
+        return jMenuItem_SimularRota;
+    }
     
-    // Deixa publico o acesso ao clique do menuItem "About..."
-    public JMenuItem getJMenuItemAbout(){
+    //
+    public JButton getjButton_CalcularRota() {
+        return jButton_CalcularRota;
+    }
+    public JMenuItem getjMenuItem_CalcularRota() {
+        return jMenuItem_CalcularRota;
+    }
+    
+    //
+    public JButton getjButton_DadosEstatistica() {
+        return jButton_DadosEstatistica;
+    }
+    public JMenuItem getjMenuItem_DadosEst() {
+        return jMenuItem_DadosEstatistica;
+    }
+
+    //
+    public JMenuItem getjMenuItem_About() {
         return jMenuItemAbout;
     }
-    // Deixa publico o acesso ao clique do menuItem "CalcRota"
-    public JMenuItem getJMenuCalcRota(){
-        return jMenuItem_CalcRota;
+    public JMenuItem getjMenuItem_Config() {
+        return jMenuItemConfig;
     }
-    // Deixa publico o acesso ao clique do botão "CalcRota"
-    public JButton getJButtonCalcRota(){
-        return jButtonCalcRota;
-    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenuFile;
-    private javax.swing.JButton jButtonCalcRota;
-    private javax.swing.JButton jButtonDadosEst;
-    private javax.swing.JButton jButtonSimulaRota;
+    private javax.swing.JButton jButton_CalcularRota;
+    private javax.swing.JButton jButton_DadosEstatistica;
+    private javax.swing.JButton jButton_SimularRota;
     private javax.swing.JLabel jLabelSelecionar;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelVersao;
@@ -215,10 +240,10 @@ public class JFrameMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuEdit;
     private javax.swing.JMenuItem jMenuItemAbout;
     private javax.swing.JMenuItem jMenuItemConfig;
-    private javax.swing.JMenuItem jMenuItemDadosEst;
-    private javax.swing.JMenuItem jMenuItem_CalcRota;
+    private javax.swing.JMenuItem jMenuItem_CalcularRota;
+    private javax.swing.JMenuItem jMenuItem_DadosEstatistica;
     private javax.swing.JMenuItem jMenuItem_Sair;
-    private javax.swing.JMenuItem jMenuItem_SimulaRota;
+    private javax.swing.JMenuItem jMenuItem_SimularRota;
     private javax.swing.JMenu jMenuView;
     private javax.swing.JPanel jPanelSelection;
     private javax.swing.JPopupMenu.Separator jSeparator;

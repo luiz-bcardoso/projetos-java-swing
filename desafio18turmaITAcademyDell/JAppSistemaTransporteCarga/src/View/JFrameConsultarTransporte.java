@@ -4,7 +4,6 @@
  */
 package View;
 
-import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author newik
  */
-public class JFrameCalcRota extends javax.swing.JFrame {
+public class JFrameConsultarTransporte extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameCalcRota
      */
-    public JFrameCalcRota() {
+    public JFrameConsultarTransporte() {
         initComponents();
     }
 
