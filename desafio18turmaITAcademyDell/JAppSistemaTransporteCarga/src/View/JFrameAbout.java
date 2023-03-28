@@ -47,7 +47,7 @@ public class JFrameAbout extends javax.swing.JFrame {
 
         jLabelVersao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelVersao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelVersao.setText("Versão: 0.3 release 26/03/2023");
+        jLabelVersao.setText("Versão: 0.4 release 27/03/2023");
 
         jLabelMotivo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelMotivo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

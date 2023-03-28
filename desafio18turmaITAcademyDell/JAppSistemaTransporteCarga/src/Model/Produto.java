@@ -13,11 +13,13 @@ import java.util.Objects;
  */
 public class Produto {
     private String nome;
-    private float peso;
+    private double peso;
+    private int quantidade;
 
-    public Produto(String nome, float peso) {
+    public Produto(String nome, double peso, int quantidade) {
         this.nome = nome;
         this.peso = peso;
+        this.quantidade = quantidade;
     }
 
     public String getNome() {
@@ -28,27 +30,40 @@ public class Produto {
         this.nome = nome;
     }
 
-    public float getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+    
+    public double calcularPesoTotal(){
+        return peso*quantidade;
     }
 
     @Override
     public String toString() {
-        return "Produto{" + "nome=" + nome + ", peso=" + peso + '}';
+        return "Produto{" + "nome=" + nome + ", peso=" + peso + ", quantidade=" + quantidade + '}';
     }
-    
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.nome);
-        hash = 89 * hash + Float.floatToIntBits(this.peso);
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.peso) ^ (Double.doubleToLongBits(this.peso) >>> 32));
+        hash = 67 * hash + this.quantidade;
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -61,6 +76,13 @@ public class Produto {
             return false;
         }
         final Produto other = (Produto) obj;
-        return true;
+        if (Double.doubleToLongBits(this.peso) != Double.doubleToLongBits(other.peso)) {
+            return false;
+        }
+        if (this.quantidade != other.quantidade) {
+            return false;
+        }
+        return Objects.equals(this.nome, other.nome);
     }
+
 }
