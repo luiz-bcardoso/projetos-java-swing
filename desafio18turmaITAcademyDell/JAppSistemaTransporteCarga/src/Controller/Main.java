@@ -10,7 +10,7 @@ import View.*;
  */
 public class Main {
     public static void main(String[] args) {
-         System.out.println("Seja bem-vindo ao Sistema de simulação de transporte interestadual versão 0.3 (27/03/23).");
+         System.out.println("Seja bem-vindo ao Sistema de simulação de transporte interestadual versão 0.5 (28/03/23).");
         ViewController cl = new ViewController(new JFrameMenu(), new JFrameAbout(), new JFrameConsultarTransporte(), new JFrameCadastrarTransporte(), new JFrameDadosEstatistica(), new JFrameRotaCalculada(), new JFrameCadastrarProduto());
         
         cl.initController();

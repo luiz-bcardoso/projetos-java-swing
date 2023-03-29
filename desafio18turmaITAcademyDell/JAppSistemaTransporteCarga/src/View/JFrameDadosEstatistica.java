@@ -1,5 +1,7 @@
 package View;
 
+import javax.swing.JTable;
+
 /**
  *
  * @author newik
@@ -19,24 +21,86 @@ public class JFrameDadosEstatistica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel_Titulo = new javax.swing.JLabel();
+        jSeparator_Titulo = new javax.swing.JSeparator();
+        jLabel_Legenda = new javax.swing.JLabel();
+        jSeparator_Legenda = new javax.swing.JSeparator();
+        jScrollPane = new javax.swing.JScrollPane();
+        jTable_Transportes = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Exibir dados estatísticos");
+
+        jLabel_Titulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Titulo.setText("Dados Estátisticas de Transportes Realizados");
+
+        jLabel_Legenda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Legenda.setText("Verifique na lista abaixo todos os transportes já cadastrados.");
+
+        jTable_Transportes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome Rota", "Custo Total", "Custo Trecho", "Custo / Km", "Custo / Produto", "Custo Total Trecho", "Custo Modalidade", "Numero Veículos", "Numero Produtos"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane.setViewportView(jTable_Transportes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator_Legenda)
+                    .addComponent(jLabel_Legenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator_Titulo)
+                    .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel_Titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_Legenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator_Legenda, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTable getjTable_Transportes() {
+        return jTable_Transportes;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel_Legenda;
+    private javax.swing.JLabel jLabel_Titulo;
+    private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JSeparator jSeparator_Legenda;
+    private javax.swing.JSeparator jSeparator_Titulo;
+    private javax.swing.JTable jTable_Transportes;
     // End of variables declaration//GEN-END:variables
 }

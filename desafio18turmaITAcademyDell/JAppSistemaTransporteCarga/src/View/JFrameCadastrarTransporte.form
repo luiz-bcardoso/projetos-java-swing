@@ -28,23 +28,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel_TrechosResgistrados" max="32767" attributes="0"/>
+                      <Component id="jLabel_TrechosResgistrados" pref="351" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                       <Component id="jButton_RemoverTrechoTabela" min="-2" pref="238" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel_Produtos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator_Produtos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton_CalcularTransporte" max="32767" attributes="0"/>
-                          <Component id="jButton_CalcularNovaRota" alignment="1" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jInternalFrame_ResultadoTransporte" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
                   <Component id="jScrollPane_TabelaTrechos" alignment="0" max="32767" attributes="0"/>
                   <Component id="jSeparator_Titulo" alignment="1" max="32767" attributes="0"/>
@@ -62,6 +48,17 @@
                       </Group>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Component id="jButton_CadastrarTrecho" min="-2" pref="147" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jPanel_Produtos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSeparator_Produtos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton_CalcularTransporte" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton_CalcularNovaRota" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jInternalFrame_ResultadoTransporte" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -106,10 +103,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jButton_CalcularTransporte" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jInternalFrame_ResultadoTransporte" min="-2" max="-2" attributes="0"/>
+                      <Component id="jInternalFrame_ResultadoTransporte" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton_CalcularNovaRota" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -123,7 +120,7 @@
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Cadastro de Transporte"/>
+        <Property name="text" type="java.lang.String" value="Cadastro de Transporte por Trechos e Produtos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator_Titulo">
@@ -219,11 +216,9 @@
               </Group>
               <Group type="102" attributes="0">
                   <Component id="jLabel_ListaTransportes" max="32767" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jComboBox_ListaTransportes" min="-2" pref="56" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               </Group>
-              <Component id="jButton_FinalizaCadastro" alignment="0" max="32767" attributes="0"/>
+              <Component id="jButton_FinalizaCadastro" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -231,10 +226,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel_ListaProdutos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel_ListaTransportes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox_ListaTransportes" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel_ListaTransportes" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel_RotaAtual" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -243,10 +235,10 @@
                       <Component id="jButton_RemoverProdutoTabela" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane_TabelaProdutos" min="-2" pref="205" max="-2" attributes="0"/>
+                  <Component id="jScrollPane_TabelaProdutos" pref="0" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton_FinalizaCadastro" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -270,20 +262,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Transporte atualmente selecionado:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_ListaTransportes">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane_TabelaProdutos">
           <AuxValues>
@@ -360,35 +338,38 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jTextField_NomeRota" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jTextField_DistanciaTotal" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                              <Component id="jLabel_DistanciaTotal" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_ValorTotal" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                              <Component id="jLabel_ValorTotal" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_ValorUnitMedio" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                              <Component id="jLabel_ValorUnitMedio" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace pref="12" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane_ListaCaminhoes" min="-2" pref="163" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_ListaCaminhoes" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel_NomeRota" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextField_NomeRota" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jTextField_PesoTotal" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel_ValorTotal" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel_ValorUnitMedio" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_ValorTotal" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_ValorUnitMedio" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel_PesoTotal" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField_DistanciaTotal" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel_DistanciaTotal" pref="114" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Component id="jLabel_ListaCaminhoes" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane_ListaCaminhoes" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -402,15 +383,19 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField_NomeRota" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel_DistanciaTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel_ListaCaminhoes" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_DistanciaTotal" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jTextField_DistanciaTotal" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel_PesoTotal" min="-2" pref="16" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextField_PesoTotal" min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel_ValorTotal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField_ValorTotal" min="-2" pref="30" max="-2" attributes="0"/>
@@ -419,9 +404,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextField_ValorUnitMedio" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane_ListaCaminhoes" max="32767" attributes="0"/>
+                      <Component id="jScrollPane_ListaCaminhoes" min="-2" pref="204" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="7" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -439,22 +424,31 @@
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="SANTA MARIA - PORTO ALEGRE"/>
+            <Property name="text" type="java.lang.String" value="???"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_DistanciaTotal">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Dist&#xe2;ncia Total:"/>
+            <Property name="text" type="java.lang.String" value="Dist&#xe2;ncia (Km) Total:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_DistanciaTotal">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="300 Km"/>
+            <Property name="text" type="java.lang.String" value="???"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_PesoTotal">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Peso (Kg) Total:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_PesoTotal">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="???"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_ValorTotal">
@@ -465,11 +459,8 @@
         <Component class="javax.swing.JTextField" name="jTextField_ValorTotal">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="R$ 300.20"/>
+            <Property name="text" type="java.lang.String" value="???"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_ValorUnitMedio">
@@ -480,11 +471,8 @@
         <Component class="javax.swing.JTextField" name="jTextField_ValorUnitMedio">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="R$ 20.20"/>
+            <Property name="text" type="java.lang.String" value="???"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_ListaCaminhoes">
@@ -508,7 +496,7 @@
                   <Font name="Segoe UI" size="12" style="2"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="1x Caminh&#xe3;o Grande&#xa;2x Caminh&#xf5;es Pequenos&#xa;13x Caminh&#xf5;es M&#xe9;dios"/>
+                <Property name="text" type="java.lang.String" value="???"/>
               </Properties>
             </Component>
           </SubComponents>

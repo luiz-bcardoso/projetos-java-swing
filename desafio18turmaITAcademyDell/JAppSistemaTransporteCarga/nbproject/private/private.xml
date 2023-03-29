@@ -5,11 +5,11 @@
         <group>
             <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/Controller/Main.java</file>
             <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/Model/Produto.java</file>
-            <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/Model/Arquivo.java</file>
-            <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/Model/Caminhao.java</file>
+            <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/View/JFrameDadosEstatistica.java</file>
             <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/View/JFrameMenu.java</file>
             <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/View/JFrameCadastrarTransporte.java</file>
             <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/Controller/ViewController.java</file>
+            <file>file:/D:/Documents/GitHub/projetos-java-swing/desafio18turmaITAcademyDell/JAppSistemaTransporteCarga/src/View/JFrameAbout.java</file>
         </group>
     </open-files>
 </project-private>

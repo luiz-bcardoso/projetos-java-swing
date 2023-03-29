@@ -3,6 +3,7 @@ package View;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -44,7 +45,6 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
         jLabel_ListaProdutos = new javax.swing.JLabel();
         jButton_RemoverProdutoTabela = new javax.swing.JButton();
         jLabel_ListaTransportes = new javax.swing.JLabel();
-        jComboBox_ListaTransportes = new javax.swing.JComboBox<>();
         jScrollPane_TabelaProdutos = new javax.swing.JScrollPane();
         jTable_TabelaProdutos = new javax.swing.JTable();
         jButton_FinalizaCadastro = new javax.swing.JButton();
@@ -57,6 +57,8 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
         jTextField_NomeRota = new javax.swing.JTextField();
         jLabel_DistanciaTotal = new javax.swing.JLabel();
         jTextField_DistanciaTotal = new javax.swing.JTextField();
+        jLabel_PesoTotal = new javax.swing.JLabel();
+        jTextField_PesoTotal = new javax.swing.JTextField();
         jLabel_ValorTotal = new javax.swing.JLabel();
         jTextField_ValorTotal = new javax.swing.JTextField();
         jLabel_ValorUnitMedio = new javax.swing.JLabel();
@@ -71,7 +73,7 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
 
         jLabel_Titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Titulo.setText("Cadastro de Transporte");
+        jLabel_Titulo.setText("Cadastro de Transporte por Trechos e Produtos");
 
         jLabel_TrechosResgistrados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel_TrechosResgistrados.setText("Lista de trechos registrados:");
@@ -124,9 +126,6 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
 
         jLabel_ListaTransportes.setText("Transporte atualmente selecionado:");
 
-        jComboBox_ListaTransportes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox_ListaTransportes.setEnabled(false);
-
         jTable_TabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -177,19 +176,15 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
                 .addComponent(jButton_RemoverProdutoTabela))
             .addGroup(jPanel_ProdutosLayout.createSequentialGroup()
                 .addComponent(jLabel_ListaTransportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox_ListaTransportes, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addComponent(jButton_FinalizaCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(74, 74, 74))
+            .addComponent(jButton_FinalizaCadastro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel_ProdutosLayout.setVerticalGroup(
             jPanel_ProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ProdutosLayout.createSequentialGroup()
                 .addComponent(jLabel_ListaProdutos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_ProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_ListaTransportes)
-                    .addComponent(jComboBox_ListaTransportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel_ListaTransportes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_RotaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -197,10 +192,10 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
                     .addComponent(jButton_CadastrarProduto)
                     .addComponent(jButton_RemoverProdutoTabela))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane_TabelaProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane_TabelaProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_FinalizaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jSeparator_Produtos.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -220,28 +215,31 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
         jTextField_NomeRota.setEditable(false);
         jTextField_NomeRota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_NomeRota.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_NomeRota.setText("SANTA MARIA - PORTO ALEGRE");
+        jTextField_NomeRota.setText("???");
 
-        jLabel_DistanciaTotal.setText("Distância Total:");
+        jLabel_DistanciaTotal.setText("Distância (Km) Total:");
 
         jTextField_DistanciaTotal.setEditable(false);
-        jTextField_DistanciaTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_DistanciaTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_DistanciaTotal.setText("300 Km");
+        jTextField_DistanciaTotal.setText("???");
+
+        jLabel_PesoTotal.setText("Peso (Kg) Total:");
+
+        jTextField_PesoTotal.setEditable(false);
+        jTextField_PesoTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PesoTotal.setText("???");
 
         jLabel_ValorTotal.setText("Valor Total:");
 
         jTextField_ValorTotal.setEditable(false);
-        jTextField_ValorTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_ValorTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_ValorTotal.setText("R$ 300.20");
+        jTextField_ValorTotal.setText("???");
 
         jLabel_ValorUnitMedio.setText("Valor Un. Médio:");
 
         jTextField_ValorUnitMedio.setEditable(false);
-        jTextField_ValorUnitMedio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_ValorUnitMedio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_ValorUnitMedio.setText("R$ 20.20");
+        jTextField_ValorUnitMedio.setText("???");
 
         jLabel_ListaCaminhoes.setText("Lista de Caminhões:");
 
@@ -252,7 +250,7 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
         jTextArea_ListaCaminhoes.setColumns(20);
         jTextArea_ListaCaminhoes.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextArea_ListaCaminhoes.setRows(5);
-        jTextArea_ListaCaminhoes.setText("1x Caminhão Grande\n2x Caminhões Pequenos\n13x Caminhões Médios");
+        jTextArea_ListaCaminhoes.setText("???");
         jScrollPane_ListaCaminhoes.setViewportView(jTextArea_ListaCaminhoes);
 
         javax.swing.GroupLayout jInternalFrame_ResultadoTransporteLayout = new javax.swing.GroupLayout(jInternalFrame_ResultadoTransporte.getContentPane());
@@ -263,28 +261,30 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
-                        .addComponent(jTextField_NomeRota)
-                        .addContainerGap())
-                    .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
-                        .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField_DistanciaTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_DistanciaTotal, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_ValorTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_ValorTotal, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_ValorUnitMedio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_ValorUnitMedio, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                .addComponent(jScrollPane_ListaCaminhoes, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel_ListaCaminhoes)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
                         .addComponent(jLabel_NomeRota)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
+                        .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField_NomeRota)
+                            .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
+                                .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextField_PesoTotal, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_ValorTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_ValorUnitMedio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField_ValorTotal, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_ValorUnitMedio, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_PesoTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField_DistanciaTotal, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_DistanciaTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                                .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_ListaCaminhoes)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jScrollPane_ListaCaminhoes)))))
+                        .addContainerGap())))
         );
         jInternalFrame_ResultadoTransporteLayout.setVerticalGroup(
             jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,14 +294,18 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField_NomeRota, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_DistanciaTotal)
-                    .addComponent(jLabel_ListaCaminhoes))
+                .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_ListaCaminhoes)
+                    .addComponent(jLabel_DistanciaTotal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame_ResultadoTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jInternalFrame_ResultadoTransporteLayout.createSequentialGroup()
                         .addComponent(jTextField_DistanciaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_PesoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_PesoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel_ValorTotal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField_ValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,8 +313,8 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
                         .addComponent(jLabel_ValorUnitMedio, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField_ValorUnitMedio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane_ListaCaminhoes))
-                .addContainerGap(7, Short.MAX_VALUE))
+                    .addComponent(jScrollPane_ListaCaminhoes, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton_CalcularNovaRota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -325,20 +329,9 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel_TrechosResgistrados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel_TrechosResgistrados, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                         .addGap(99, 99, 99)
                         .addComponent(jButton_RemoverTrechoTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel_Produtos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator_Produtos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_CalcularTransporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_CalcularNovaRota, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jInternalFrame_ResultadoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jScrollPane_TabelaTrechos)
                     .addComponent(jSeparator_Titulo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel_Titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -352,7 +345,16 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
                             .addComponent(jLabel_CidadeDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jComboBox_CidadeDestino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jButton_CadastrarTrecho, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton_CadastrarTrecho, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel_Produtos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator_Produtos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_CalcularTransporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_CalcularNovaRota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jInternalFrame_ResultadoTransporte))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -385,10 +387,10 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Produtos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator_Produtos)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton_CalcularTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jInternalFrame_ResultadoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jInternalFrame_ResultadoTransporte)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_CalcularNovaRota, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -397,7 +399,7 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     public JButton getjButton_CadastrarProduto() {
         return jButton_CadastrarProduto;
     }
@@ -439,10 +441,6 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
         return jComboBox_CidadeOrigem;
     }
 
-    public JComboBox<String> getjComboBox_ListaTransportes() {
-        return jComboBox_ListaTransportes;
-    }
-
     public JTable getjTable_TabelaProdutos() {
         return jTable_TabelaProdutos;
     }
@@ -459,6 +457,10 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
         return jTextField_DistanciaTotal;
     }
 
+    public JTextField getjTextField_PesoTotal() {
+        return jTextField_PesoTotal;
+    }
+    
     public JTextField getjTextField_NomeRota() {
         return jTextField_NomeRota;
     }
@@ -487,7 +489,6 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
     private javax.swing.JButton jButton_RemoverTrechoTabela;
     private javax.swing.JComboBox<String> jComboBox_CidadeDestino;
     private javax.swing.JComboBox<String> jComboBox_CidadeOrigem;
-    private javax.swing.JComboBox<String> jComboBox_ListaTransportes;
     private javax.swing.JInternalFrame jInternalFrame_ResultadoTransporte;
     private javax.swing.JLabel jLabel_CidadeDestino;
     private javax.swing.JLabel jLabel_CidadeOrigem;
@@ -496,6 +497,7 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_ListaProdutos;
     private javax.swing.JLabel jLabel_ListaTransportes;
     private javax.swing.JLabel jLabel_NomeRota;
+    private javax.swing.JLabel jLabel_PesoTotal;
     private javax.swing.JLabel jLabel_RotaAtual;
     private javax.swing.JLabel jLabel_Titulo;
     private javax.swing.JLabel jLabel_TrechosResgistrados;
@@ -513,6 +515,7 @@ public class JFrameCadastrarTransporte extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea_ListaCaminhoes;
     private javax.swing.JTextField jTextField_DistanciaTotal;
     private javax.swing.JTextField jTextField_NomeRota;
+    private javax.swing.JTextField jTextField_PesoTotal;
     private javax.swing.JTextField jTextField_ValorTotal;
     private javax.swing.JTextField jTextField_ValorUnitMedio;
     // End of variables declaration//GEN-END:variables

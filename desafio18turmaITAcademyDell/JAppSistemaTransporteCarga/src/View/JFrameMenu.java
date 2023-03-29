@@ -39,6 +39,7 @@ public class JFrameMenu extends javax.swing.JFrame {
         jButton_DadosEstatistica = new javax.swing.JButton();
         jSeparatorVersao = new javax.swing.JSeparator();
         jLabelVersao = new javax.swing.JLabel();
+        jLabel_EstadoSoftware = new javax.swing.JLabel();
         jMenu = new javax.swing.JMenuBar();
         JMenuFile = new javax.swing.JMenu();
         jMenuItem_SimularRota = new javax.swing.JMenuItem();
@@ -107,7 +108,9 @@ public class JFrameMenu extends javax.swing.JFrame {
 
         jLabelVersao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelVersao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelVersao.setText("Versão 0.4 - 27 / mar / 2023");
+        jLabelVersao.setText("Versão 0.5 - 28 / mar / 2023");
+
+        jLabel_EstadoSoftware.setText(" (INCOMPLETO)");
 
         JMenuFile.setText("File");
 
@@ -160,9 +163,12 @@ public class JFrameMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparatorTitulo)
-                    .addComponent(jLabelVersao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparatorVersao)
-                    .addComponent(jPanelSelection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelSelection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelVersao, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel_EstadoSoftware)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -177,7 +183,9 @@ public class JFrameMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparatorVersao, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelVersao)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelVersao)
+                    .addComponent(jLabel_EstadoSoftware))
                 .addContainerGap())
         );
 
@@ -236,6 +244,7 @@ public class JFrameMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSelecionar;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelVersao;
+    private javax.swing.JLabel jLabel_EstadoSoftware;
     private javax.swing.JMenuBar jMenu;
     private javax.swing.JMenu jMenuEdit;
     private javax.swing.JMenuItem jMenuItemAbout;

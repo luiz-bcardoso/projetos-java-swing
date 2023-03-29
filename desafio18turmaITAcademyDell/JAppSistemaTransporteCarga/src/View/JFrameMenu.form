@@ -97,9 +97,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelTitulo" max="32767" attributes="0"/>
                   <Component id="jSeparatorTitulo" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabelVersao" alignment="0" max="32767" attributes="0"/>
                   <Component id="jSeparatorVersao" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanelSelection" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabelVersao" min="-2" pref="334" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel_EstadoSoftware" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -117,7 +121,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparatorVersao" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jLabelVersao" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelVersao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_EstadoSoftware" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -225,7 +232,12 @@
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Vers&#xe3;o 0.4 - 27 / mar / 2023"/>
+        <Property name="text" type="java.lang.String" value="Vers&#xe3;o 0.5 - 28 / mar / 2023"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_EstadoSoftware">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" (INCOMPLETO)"/>
       </Properties>
     </Component>
   </SubComponents>
