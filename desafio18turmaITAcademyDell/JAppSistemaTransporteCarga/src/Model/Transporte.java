@@ -5,43 +5,60 @@ import java.util.Objects;
 
 /**
  *
- * @author Luiz Batista
- * 28 mar 2023
+ * @author Luiz Batista 28 mar 2023
  */
-
 public class Transporte {
+
     private String nomeRota;
+
     private ArrayList<Produto> listaProduto;
     private ArrayList<Caminhao> listaCaminhao;
-    
+
     private double distanciaTotal;
-    
+    private double custoProduto;
+    private double custoTotalModalidade;
+
+    // Não precisa informar no construtor
     private double custoTotal;
     private double custoPorTecho;
     private double custoKm;
-    private double custoProduto;
     private double custoTotalTrecho;
-    private double custoModalidade;
 
-    public Transporte(String nomeRota, ArrayList<Produto> listaProduto, ArrayList<Caminhao> listaCaminhao, double distanciaTotal, double custoTotal, double custoPorTecho, double custoKm, double custoProduto, double custoTotalTrecho, double custoModalidade) {
+    public Transporte(String nomeRota, ArrayList<Produto> listaProduto, ArrayList<Caminhao> listaCaminhao, double distanciaTotal, double custoProduto, double custoModalidade) {
         this.nomeRota = nomeRota;
         this.listaProduto = listaProduto;
         this.listaCaminhao = listaCaminhao;
         this.distanciaTotal = distanciaTotal;
-        this.custoTotal = custoTotal;
-        this.custoPorTecho = custoPorTecho;
-        this.custoKm = custoKm;
         this.custoProduto = custoProduto;
-        this.custoTotalTrecho = custoTotalTrecho;
-        this.custoModalidade = custoModalidade;
+        this.custoTotalModalidade = custoModalidade;
     }
 
-    public int getNumeroVeiculos(){
+    // Método que calcula o custo do trechpo baseado nas variaveis inseridas ( distancia, peso e custoKm)
+    public Double calulcaCustoTrecho(Double distancia, Double peso, Double custoKmCombinado) {
+        custoPorTecho = distancia * peso * custoKmCombinado;
+        return custoPorTecho;
+    }
+
+    // Método que calcula o custo total do transporte, informado na lista de custoTrechos.
+    public Double calcularCustoTotal(ArrayList<Double> listaCustoTrechos) {
+        for (Double custos : listaCustoTrechos) {
+            custoTotal += custos;
+        }
+        this.custoTotalTrecho = custoTotal;
+        return custoTotal;
+    }
+
+    public Double calcularCustoKm(Double distancia) {
+        custoKm = custoTotal / distancia;
+        return custoKm;
+    }
+
+    public int getNumeroVeiculos() {
         return listaCaminhao.size();
     }
-    
-    public int getNumeroProdutos(){
-       return listaProduto.size();
+
+    public int getNumeroProdutos() {
+        return listaProduto.size();
     }
 
     public String getNomeRota() {
@@ -117,16 +134,16 @@ public class Transporte {
     }
 
     public double getCustoModalidade() {
-        return custoModalidade;
+        return custoTotalModalidade;
     }
 
     public void setCustoModalidade(double custoModalidade) {
-        this.custoModalidade = custoModalidade;
+        this.custoTotalModalidade = custoModalidade;
     }
 
     @Override
     public String toString() {
-        return "Transporte{" + "nomeRota=" + nomeRota + ", listaProduto=" + listaProduto + ", listaCaminhao=" + listaCaminhao + ", distanciaTotal=" + distanciaTotal + ", custoTotal=" + custoTotal + ", custoPorTecho=" + custoPorTecho + ", custoKm=" + custoKm + ", custoProduto=" + custoProduto + ", custoTotalTrecho=" + custoTotalTrecho + ", custoModalidade=" + custoModalidade + '}';
+        return "Transporte{" + "nomeRota=" + nomeRota + ", listaProduto=" + listaProduto + ", listaCaminhao=" + listaCaminhao + ", distanciaTotal=" + distanciaTotal + ", custoTotal=" + custoTotal + ", custoPorTecho=" + custoPorTecho + ", custoKm=" + custoKm + ", custoProduto=" + custoProduto + ", custoTotalTrecho=" + custoTotalTrecho + ", custoModalidade=" + custoTotalModalidade + '}';
     }
 
     @Override
@@ -141,7 +158,7 @@ public class Transporte {
         hash = 71 * hash + (int) (Double.doubleToLongBits(this.custoKm) ^ (Double.doubleToLongBits(this.custoKm) >>> 32));
         hash = 71 * hash + (int) (Double.doubleToLongBits(this.custoProduto) ^ (Double.doubleToLongBits(this.custoProduto) >>> 32));
         hash = 71 * hash + (int) (Double.doubleToLongBits(this.custoTotalTrecho) ^ (Double.doubleToLongBits(this.custoTotalTrecho) >>> 32));
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.custoModalidade) ^ (Double.doubleToLongBits(this.custoModalidade) >>> 32));
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.custoTotalModalidade) ^ (Double.doubleToLongBits(this.custoTotalModalidade) >>> 32));
         return hash;
     }
 
@@ -175,7 +192,7 @@ public class Transporte {
         if (Double.doubleToLongBits(this.custoTotalTrecho) != Double.doubleToLongBits(other.custoTotalTrecho)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.custoModalidade) != Double.doubleToLongBits(other.custoModalidade)) {
+        if (Double.doubleToLongBits(this.custoTotalModalidade) != Double.doubleToLongBits(other.custoTotalModalidade)) {
             return false;
         }
         if (!Objects.equals(this.nomeRota, other.nomeRota)) {
@@ -186,6 +203,5 @@ public class Transporte {
         }
         return Objects.equals(this.listaCaminhao, other.listaCaminhao);
     }
-    
-   
+
 }

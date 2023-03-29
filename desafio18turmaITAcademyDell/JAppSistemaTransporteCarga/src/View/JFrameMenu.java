@@ -108,7 +108,7 @@ public class JFrameMenu extends javax.swing.JFrame {
 
         jLabelVersao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelVersao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelVersao.setText("Versão 0.5 - 28 / mar / 2023");
+        jLabelVersao.setText("Versão 0.6 - 29 / mar / 2023");
 
         jLabel_EstadoSoftware.setText(" (INCOMPLETO)");
 

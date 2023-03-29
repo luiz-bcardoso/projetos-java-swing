@@ -37,6 +37,7 @@ public class ViewController {
     // Declaração inicial das classes Caminhao e Produto.
     private Caminhao caminhao;
     private Produto produto;
+    private Transporte transporte;
 
     // Strings, o nome do arquivo a ser lido, a cidade de orgiem e destino.
     private String nomeArquivo;
@@ -58,6 +59,7 @@ public class ViewController {
     private ArrayList<Double> listaDistancias;              // Contém todas as distâncias entre as rotas inseridas no cadastro de transporte.   
     private ArrayList<Produto> listaProdutos;               // Contém todos os produtos cadastrados em determinada rota.
     private ArrayList<Caminhao> listaCaminhoes;             // Contém todos os caminhões que vão ser necessários para realizar determinado transporte.   
+    private ArrayList<Caminhao> listaCaminhoesBKP;          // Guarda a lista de caminhoes da rota anterior para comparar depois se houve mudança.
     private ArrayList<Transporte> listaTransportes;         // Contém todos os transportes realizado, ao final de cada transporte ele é cadastrado no relatório (requisito 3)
 
     // As duas tabelas do formulário de cadastro de transporte.
@@ -68,13 +70,16 @@ public class ViewController {
     private Double distancia;
     private Double custoTransporte;
     private Double pesoRotasTotal;
+    private Double pesoTotalAtual;
 
-    // Doubles, armazendo o valor do resultado das rotas cadastradas do requisito 3.
+    // Doubles, armazendo o valor do resultado das rotas cadastradas do requisito 3.  
     private Double distanciaTotal;
     private Double custoTotalRotas;
     private Double custoUnitarioRotas;
     private Double custoModalidadeCombinada;
     private Double distribuirPesoCaminhao;
+
+    private int qtdProdutosCadastrados;
 
     // Lista de caminhões para adicionar na lista quando for separar carga.
     Caminhao caminhaoP;
@@ -149,7 +154,7 @@ public class ViewController {
 
         // Inicializando variáveis do enunciado exercício:
         custosKm = new Double[]{4.87, 11.92, 27.44};
-        capacidadeCaminhoes = new Double[]{1000.0, 4000.0, 10 - 00.0};
+        capacidadeCaminhoes = new Double[]{1000.0, 4000.0, 10000.0};
 
         // Inicializando variáveis ArrayLists:
         listaCidadesSelecionadas = new ArrayList();
@@ -158,6 +163,7 @@ public class ViewController {
         listaProdutos = new ArrayList();
         listaCaminhoes = new ArrayList();
         listaTransportes = new ArrayList<>();
+        listaCaminhoesBKP = new ArrayList<>();
 
         // Inicializando variáveis Strings:
         cidadeOrigem = new String();
@@ -169,6 +175,7 @@ public class ViewController {
         distanciaTotal = 0.0;
 
         // Inicializando variáveis do resultado do transporte:
+        qtdProdutosCadastrados = 0;
         distanciaTotal = 0.0;
         pesoRotasTotal = 0.0;
         custoTotalRotas = 0.0;
@@ -463,37 +470,6 @@ public class ViewController {
         }
     }
 
-    //
-    private void finalizarCadastroProdutoRota() {
-        System.out.println("Cadastrando peso e distancia finais para produtos e rota...");
-
-        // Checa se a quantidade de linhas (produtos cadastrados) na tabela é menor ou igual a 0
-        if (cadastrarRota.getjTable_TabelaProdutos().getModel().getRowCount() <= 0) {
-            System.out.println("ERRO! Não existem produtos cadastrados para esta rota.");
-            JOptionPane.showMessageDialog(cadastrarRota, "Atenção! Não foi cadastrado nenhum produto, tente novamente.");
-        } else {
-
-            Double pesoTotalAtual = 0.0;
-
-            // Descobrir peso total dos produtos de cada rota:
-            for (Double pesos : listaPesosRota) {
-                pesoRotasTotal += pesos;
-                pesoTotalAtual += pesos;
-            }
-
-            // Descobrir peso total dos produtos da rota atual:
-            System.out.println("O peso total para está rota é de " + pesoTotalAtual + " Kgs.");
-            JOptionPane.showMessageDialog(cadastrarProduto, "O peso total para está rota é de " + pesoTotalAtual + " Kgs.");
-
-            // Limpa a tabela de produtos e pesos para a nova rota não pegar valores errados.
-            listaPesosRota.clear();
-            listaProdutos.clear();
-
-            trocarRotaSelecionada();
-        }
-
-    }
-
     // Popula a tabela seleciona com os produtos cadastrados e seus pesos combinados.
     private void setProdutosTabela() {
         DefaultTableModel model = new DefaultTableModel();
@@ -545,10 +521,11 @@ public class ViewController {
 
     // Sera chamada quando o usuario termiar de cadastrar os produtos na rota atual.
     private void trocarRotaSelecionada() {
-        if (listaCidadesSelecionadas.size() >= 0) {
+        if (!listaDistancias.isEmpty()) {
             // Possui rotas cadastradas:
+            System.out.println("cadastrando nova rota, lista distancias " + listaDistancias.size());
             String mensagem;
-            int pos = listaCidadesSelecionadas.size();
+            int pos = listaDistancias.size();
             if (pos <= 1) {
                 // somente um elemento na linha
                 mensagem = "A lista de produtos de todas as rotas foram concluídas!\nAgora é possível calcluar o transporte e descobrir o menor custo pela quilometragem rodada.";
@@ -557,10 +534,11 @@ public class ViewController {
                 cadastrarRota.getjButton_CalcularTransporte().setEnabled(true);
             } else {
                 // se tiver mais de um elemento (2), tem dois trajeto então tem que mostrar o primeiro e o proximo
-                mensagem = "A lista de produtos para a rota " + listaCidadesSelecionadas.get(pos - pos) + " foram salvas com sucesso.\nAgora deverão ser inseridas os produtos da próxima rota (" + listaCidadesSelecionadas.get((pos - pos) + 1) + ").";
-                listaCidadesSelecionadas.remove((pos - pos));
+                mensagem = "A lista de produtos para a rota " + listaCidadesSelecionadas.get(0) + " foram salvas com sucesso.\nAgora deverão ser inseridas os produtos da próxima rota (" + listaCidadesSelecionadas.get((pos - pos) + 1) + ").";
+                listaDistancias.remove((pos - pos));
                 // Coloca a última rota cadastrada como selecionada no cadastro de produto.
                 cadastrarRota.getjLabel_RotaAtual().setText(String.valueOf(listaCidadesSelecionadas.get(pos - pos)));
+
             }
 
             // Mostra mensagem de acordo com o número de rotas restantes.
@@ -580,10 +558,17 @@ public class ViewController {
     // Foi clicado no botão de calcular rota (endgame)
     private void calcularRotaTransporte() {
         System.out.println("Calculando custo de transporte para as rotas e peso informado...");
-        distribuirPesoCaminhao = pesoRotasTotal;
-        totalCaminhoesUtilizados = "";
 
         calculaTransporte();
+
+        for (Caminhao caminhoes : listaCaminhoes) {
+            custoModalidadeCombinada += custoModalidadeCombinada + caminhoes.getCustoQuilometragem();
+            totalCaminhoesUtilizados += "\n------------------------------------ \n"
+                    + " Caminhão de " + caminhoes.getPorte().toUpperCase() + " porte.\n"
+                    + " Carregando até " + caminhoes.getCarga() + " Kg.\n"
+                    + " Com custo de R$ " + caminhoes.getCustoQuilometragem() + " / Km\n"
+                    + "------------------------------------\n";
+        }
 
         cadastrarRota.getjTextField_NomeRota().setText(rotaIncialFinal);
         cadastrarRota.getjTextField_DistanciaTotal().setText(distanciaTotal + " Km.");
@@ -598,40 +583,44 @@ public class ViewController {
 
     private void calculaTransporte() {
         // Pega o nome da primeira e ultima cidade de maneira bem horrosa.
-        rotaIncialFinal = cadastrarRota.getjTable_TabelaTrechos().getValueAt(0, 0) + " até " + cadastrarRota.getjComboBox_CidadeOrigem().getItemAt(cadastrarRota.getjComboBox_CidadeOrigem().getSelectedIndex());
+        rotaIncialFinal = cadastrarRota.getjTable_TabelaTrechos().getValueAt(0, 0) + " até " + cidadeDestino;
 
-        // Chama o método que vai dividir a carga nos caminhões e vai retornar em uma lista.
-        while (distribuirPesoCaminhao > 0.0) {
-            System.out.println("Peso ainda não é 0 ou negativo, alocando restante a mais um caminhão...");
-            alocarPesoCaminhao();
-        }
-
-        ArrayList<Double> custoTrecho = new ArrayList<>();
-        double custoKm = 0;
-        double custoProduto = 0;
-        double custoTotalTrecho = 0;
-        // custo modalidade = custo modalidade combinada.
-
-        System.out.println("Terminado de dividir peso entre os caminhões.");
-        for (Caminhao caminhoes : listaCaminhoes) {
-            custoModalidadeCombinada += custoModalidadeCombinada + caminhoes.getCustoQuilometragem();
-            for (int i = 0; i < listaCidadesSelecionadas.size(); i++) {
-                custoTrecho.add(listaDistancias.get(i)*custoModalidadeCombinada); // Atencão nao atuliza o custo da modalidade ainda, permanece o mesmo independete se foi descarregado ou nao.
+        // Faz este loop para cada rota cadastrada, ex: se duas rotas forem cadastradas ele ira gerar dois calculos de caminhao, gerar dois transportes e cadastrar duas vezes.
+        for (int i = 1; i <= listaCidadesSelecionadas.size(); i++) {
+            System.out.println("Lista de distancias" + listaDistancias.size());
+            distribuirPesoCaminhao = pesoTotalAtual;
+            System.out.println("Peso do caminhão é: " + distribuirPesoCaminhao);
+            // Chama o método que vai dividir a carga nos caminhões e vai retornar em uma lista.
+            System.out.println("Iniciado a divisão de peso para o(os) caminhões.");
+            while (distribuirPesoCaminhao > 0.0) {
+                System.out.println("Peso ainda não é 0 ou negativo, alocando restante a mais um caminhão...");
+                alocarPesoCaminhao(listaCaminhoes);
             }
-            totalCaminhoesUtilizados += "\n------------------------------------ \n"
-                    + " Caminhão de " + caminhoes.getPorte().toUpperCase() + " porte.\n"
-                    + " Carregando até " + caminhoes.getCarga() + " Kg.\n"
-                    + " Com custo de R$ " + caminhoes.getCustoQuilometragem() + " / Km\n"
-                    + "------------------------------------\n";
+
+            if (listaCaminhoesBKP.size() > 0 && listaCaminhoes.equals(listaCaminhoesBKP)) {
+                System.out.println("Não houve mudaça na quantidade de mudança de caminhões... pegando a lista original");
+                // Cadastra as informações no transporte e guarda na lista para leitura.
+                transporte = new Transporte(rotaIncialFinal, listaProdutos, listaCaminhoesBKP, distanciaTotal, 0, custoModalidadeCombinada);
+                listaTransportes.add(transporte);
+            } else {
+                System.out.println("Houve mudança na quantidade de caminhoes, escolhendo a nova lista.");
+                transporte = new Transporte(rotaIncialFinal, listaProdutos, listaCaminhoes, distanciaTotal, 0, custoModalidadeCombinada);
+                listaTransportes.add(transporte);
+            }
+            System.out.println("Terminado de dividir peso entre os caminhões.");
+
+            listaCaminhoesBKP = listaCaminhoes;
+            listaCaminhoes.clear();
+
         }
 
-        System.out.println("-- DEBUG MODE --");
-        System.out.println("custoKmCombinado : " + custoModalidadeCombinada);
-        System.out.println("listaCidadesSelecionadas (nº de trechos) : " + listaCidadesSelecionadas.size());
-        // todo achar o lugar que troca de rota e tabela e atualizar a modalidade do caminhao. mas como ele é chamado antes de cadastrar a rota tem que improvisar de algum jeito.
+        for (Transporte transportes : listaTransportes) {
+            System.out.println(transportes.toString());
+        }
 
+        //JOptionPane.showMessageDialog(cadastrarRota, "Todos as rotas do transporte foram cadastradas com sucesso.\nVerifique resultados em mais detalhes na lista de relatório no menu inicial.");
         JOptionPane.showMessageDialog(cadastrarRota, "O método de calcular rota está incompleto.\n Não é possível exibir o custo de mais de uma rota e nem cadastrar seu relatório.", "Erro Método Incompleto!", JOptionPane.ERROR_MESSAGE);
-        
+
     }
 
     private void iniciaTransporte() {
@@ -653,22 +642,28 @@ public class ViewController {
     }
 
     // Método que tenta encontrar a melhor distribuição de carga, faz 9 comparações (ruim) mas funciona.
-    private void alocarPesoCaminhao() {
+    private void alocarPesoCaminhao(ArrayList<Caminhao> listaCaminhoes) {
+        // Não existe caminhão cadastrado, vai ser a primeira vez... logo ele vai fazer o procedimento normal.
         // Caso o distribuirPesoCaminhao for igual a 10.000Kg:
-        if (distribuirPesoCaminhao.equals(10000.0)) {
+        if (distribuirPesoCaminhao < 1000 && distribuirPesoCaminhao > 0) {
+            listaCaminhoes.add(caminhaoP);
+            distribuirPesoCaminhao = distribuirPesoCaminhao - 1000;
+            System.out.println("Como o peso é menor que 1000Kg coloca tudo no CAMINHÃO PEQUENO | Peso: :" + distribuirPesoCaminhao);
+        }
+        if (distribuirPesoCaminhao == 10000.0) {
             distribuirPesoCaminhao = distribuirPesoCaminhao - 10000;
 
             listaCaminhoes.add(caminhaoG);
             System.out.println("Adicionado novo CAMINHÃO GRANDE | Peso: " + distribuirPesoCaminhao);
         }
         // Caso o distribuirPesoCaminhao for igual a 4.000Kg:
-        if (distribuirPesoCaminhao.equals(4000.0)) {
+        if (distribuirPesoCaminhao == 4000.0) {
             distribuirPesoCaminhao = distribuirPesoCaminhao - 4000;
             listaCaminhoes.add(caminhaoM);
             System.out.println("Adicionado novo CAMINHÃO MÉDIO | Peso: " + distribuirPesoCaminhao);
         }
         // Caso o distribuirPesoCaminhao for igual a 1.000Kg:
-        if (distribuirPesoCaminhao.equals(1000.0)) {
+        if (distribuirPesoCaminhao == 1000.0) {
             distribuirPesoCaminhao = distribuirPesoCaminhao - 1000;
             listaCaminhoes.add(caminhaoP);
             System.out.println("Adicionado novo CAMINHÃO PEQUENO | Peso: " + distribuirPesoCaminhao);
@@ -705,14 +700,11 @@ public class ViewController {
                 System.out.println("Adicionado novo CAMINHÃO PEQUENO | Peso: " + distribuirPesoCaminhao);
                 //System.out.println("cG: " + cG + " cM: " + cM + " cP: " + cP);
             }
-            if (distribuirPesoCaminhao < 1000 && distribuirPesoCaminhao > 0) {
-                listaCaminhoes.add(caminhaoP);
-                distribuirPesoCaminhao = distribuirPesoCaminhao - 1000;
-                System.out.println("o restante colocar em um novo CAMINHÃO PEQUENO | Peso: :" + distribuirPesoCaminhao);
 
-            }
+            System.out.println("CADASTRANDO CAMINHOES!");
         }
     }
+
 
     private void atualizarDadosEstistica() {
         JTable tabelaRelatorio = dadosEstatistica.getjTable_Transportes();
@@ -725,7 +717,7 @@ public class ViewController {
 
             String[] row = new String[9];
 
-            for (int i = 0; i < listaTransportes.size(); i++) {
+            for (int i = 1; i < listaTransportes.size(); i++) {
 
                 row[0] = listaTransportes.get(i).getNomeRota();
                 row[1] = Double.toString(listaTransportes.get(i).getCustoTotal());
@@ -744,6 +736,40 @@ public class ViewController {
         }
     }
 
+    //
+    private void finalizarCadastroProdutoRota() {
+        System.out.println("Cadastrando peso e distancia finais para produtos e rota...");
+
+        // Checa se a quantidade de linhas (produtos cadastrados) na tabela é menor ou igual a 0
+        if (cadastrarRota.getjTable_TabelaProdutos().getModel().getRowCount() <= 0) {
+            System.out.println("ERRO! Não existem produtos cadastrados para esta rota.");
+            JOptionPane.showMessageDialog(cadastrarRota, "Atenção! Não foi cadastrado nenhum produto, tente novamente.");
+        } else {
+
+            pesoTotalAtual = 0.0;
+
+            // Descobrir peso total dos produtos de cada rota:
+            for (Double pesos : listaPesosRota) {
+                pesoRotasTotal += pesos;
+                pesoTotalAtual += pesos;
+            }
+
+            for (Produto produto : listaProdutos) {
+                qtdProdutosCadastrados = listaProdutos.size();
+            }
+
+            // Descobrir peso total dos produtos da rota atual:
+            System.out.println("O peso total para está rota é de " + pesoTotalAtual + " Kgs.");
+            JOptionPane.showMessageDialog(cadastrarProduto, "O peso total para está rota é de " + pesoTotalAtual + " Kgs.");
+
+            // Limpa a tabela de produtos e pesos para a nova rota não pegar valores errados.
+            listaPesosRota.clear();
+            listaProdutos.clear();
+
+            trocarRotaSelecionada();
+        }
+
+    }
 }
 
 /* TODO LIST:
